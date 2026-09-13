@@ -3,10 +3,10 @@
 osu!skingacha - это программа для выбора рандомного скина в osu!stable
 # Скачивание
 Windows:
- - Скачайте [здесь](https://github.com/DimEdrol-prog/osu-skin-gacha/releases/latest) .exe файл и запустите
+- Скачайте [здесь](https://github.com/DimEdrol-prog/osu-skin-gacha/releases/latest) .exe файл и запустите
 
 Linux дистрибутивы:
- - Debian/Ubuntu:
+- Debian/Ubuntu:
   ```bash
   sudo apt update
   sudo apt install python3 python3-tk python3-pip make
@@ -24,22 +24,22 @@ Linux дистрибутивы:
   sudo zypper install python3 python3-tk python3-pip make
   ```
 
- - NixOS:
- ```bash
- nix develop # или nix-shell если без flakes
- ```
+- NixOS:
+  ```bash
+  nix develop # или nix-shell если без flakes
+  ```
 
- - Перейдите в директорию с программой соберите:
-```bash
-make install
-```
+- Перейдите в директорию с программой соберите:
+  ```bash
+  make install
+  ```
 
- - Запустите:
-```bash
-./dist/main
-```
+- Запустите:
+  ```bash
+  ./dist/main
+  ```
 
- - Либо скачайте [здесь](https://github.com/DimEdrol-prog/osu-skin-gacha/releases/latest) AppImage
+- Либо скачайте [здесь](https://github.com/DimEdrol-prog/osu-skin-gacha/releases/latest) AppImage
 
 # Структура файлов
 ```
