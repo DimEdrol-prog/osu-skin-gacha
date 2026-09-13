@@ -4,7 +4,7 @@ run:
 	python3 main.py
 
 install:
-	python3 -m pip install -r requirements.txt && python3 -m PyInstaller --onefile main.py
+	python3 -m pip install -r requirements.txt && python3 -m PyInstaller --hidden-import=customtkinter --hidden-import=requests --hidden-import=Pillow --hidden-import=beautifulsoup4 --hidden-import=rosu-pp-py --hidden-import=pygame-ce --onefile main.py
 
 clean:
 	find . -type d -name "__pycache__" -exec rm -r {} +
