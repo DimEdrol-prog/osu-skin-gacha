@@ -49,14 +49,12 @@ Linux дистрибутивы:
 │   └── gacha.ico
 ├── docs
 │   ├── ARCHITECTURE.md
-│   ├── how_to_linux.md
 │   └── HOW_TO_RUN.txt
 ├── drive_catalog.json
 ├── ensure_python.ps1
 ├── flake.lock
 ├── flake.nix
 ├── install_dependencies.cmd
-├── install_dependencies.sh
 ├── main.py
 ├── Makefile
 ├── modules
@@ -105,6 +103,5 @@ Linux дистрибутивы:
 ├── README.md
 ├── requirements.txt
 ├── run_skin_gacha.cmd
-├── run_skin_gacha.sh
 └── shell.nix
 ```
