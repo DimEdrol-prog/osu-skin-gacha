@@ -1,21 +1,21 @@
-# Все дистрибутивы
 Установите зависимости:
 
 - Debian/Ubuntu:
   ```bash
   sudo apt update
-  sudo apt install python3 python3-tk python3-pip
+  sudo apt install python3 python3-tk python3-pip make
   ```
 
 - RHEL/Fedora:
   ```bash
   sudo dnf update
-  sudo dnf install python3 python3-tkinter python3-pip
+  sudo dnf install python3 python3-tkinter python3-pip make
   ```
 
 - OpenSUSE:
   ```bash
-  sudo zypper install python3 python3-tk python3-pip
+  sudo zypper refresh
+  sudo zypper install python3 python3-tk python3-pip make
   ```
 
  - NixOS:
@@ -23,17 +23,12 @@
  nix develop # или nix-shell если без flakes
  ```
 
-Перейдите в директорию с программой и установите остальные зависимости:
+Перейдите в директорию с программой соберите:
 ```bash
-python3 -m pip install -r requirements.txt
-```
-
-Скомпилируйте программу:
-```bash
-python -m PyInstaller --onefile skin_gacha.py
+make install
 ```
 
 Запустите:
 ```bash
-./dist/skin_gacha
+./dist/main
 ```

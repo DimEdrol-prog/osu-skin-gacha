@@ -40,6 +40,7 @@
               tcl
               stdenv.cc.cc.lib
               zlib
+              gnumake
             ];
 
             shellHook = ''

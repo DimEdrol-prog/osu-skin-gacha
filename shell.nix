@@ -20,6 +20,7 @@ pkgs.mkShell {
     tcl
     stdenv.cc.cc.lib
     zlib
+    gnumake
   ];
   shellHook = ''
     export TCL_LIBRARY="${pkgs.tcl}/lib/tcl8.6"
