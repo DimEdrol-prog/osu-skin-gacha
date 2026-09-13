@@ -14,7 +14,7 @@ if [ -f ".runtime/customtkinter/__init__.py" ] && [ -f "$GACHA_DEV/bin/python3" 
   export TCL_LIBRARY="$GACHA_DEV/lib/tcl8.6"
   export TK_LIBRARY="$GACHA_DEV/lib/tk8.6"
 
-  "$GACHA_DEV/bin/python3" "$(pwd)/skin_gacha.py"
+  "$GACHA_DEV/bin/python3" "$(pwd)/main.py"
   if [ $? -ne 0 ]; then
     read -r -p "Press Enter to continue..."
   fi

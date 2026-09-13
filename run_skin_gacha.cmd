@@ -12,7 +12,7 @@ if exist ".runtime\customtkinter\__init__.py" if exist "%GACHA_DEV%\python.exe" 
   set "PYTHONPATH=%~dp0.runtime"
   set "TCL_LIBRARY=%GACHA_DEV%\tcl\tcl8.6"
   set "TK_LIBRARY=%GACHA_DEV%\tcl\tk8.6"
-  "%GACHA_DEV%\python.exe" "%~dp0skin_gacha.py"
+  "%GACHA_DEV%\python.exe" "%~dp0main.py"
   if errorlevel 1 pause
   exit /b
 )
