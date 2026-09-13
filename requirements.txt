@@ -1,0 +1,7 @@
+customtkinter>=5.2.2,<7
+requests>=2.31,<3
+Pillow>=10,<13
+beautifulsoup4>=4.12,<5
+rosu-pp-py>=4.0.2,<5
+pyinstaller==6.22.2
+pygame-ce>=2.5,<3

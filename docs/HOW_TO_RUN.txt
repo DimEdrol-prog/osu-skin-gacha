@@ -1,0 +1,249 @@
+﻿osu!gacha — beta4
+РУССКИЙ / ENGLISH
+
+==================== РУССКИЙ ====================
+
+БЫСТРЫЙ ЗАПУСК
+1. Полностью распакуйте osu!gacha_beta4.zip в отдельную папку.
+   Не запускайте программу прямо из окна архива.
+2. Дважды нажмите run_skin_gacha.cmd и дождитесь окна программы.
+   Первый запуск требует интернета: Python и библиотеки подготавливаются
+   автоматически. Следующие запуски используют установленное окружение.
+3. Пройдите первичную настройку: выберите свою папку osu!stable и профиль.
+   Bancho: ID и личный API-ключ v1. Gatari: собственный Gatari ID, без ключа.
+4. Нажмите «Начать сессию» и дождитесь сообщения «Можете играть».
+
+Не требуется отдельно запускать install_dependencies.cmd, добавлять Python
+в PATH или вводить команды. Если подходящий Python уже установлен,
+программа использует его. Поддерживается 64-разрядный Python 3.10–3.13
+с Tcl/Tk на Windows 10/11. Автоустановка использует Python 3.12.
+WinGet не обязателен: предусмотрен официальный установщик python.org.
+Установщик проверяется по цифровой подписи перед запуском.
+Установка рассчитана на текущего пользователя; обычно без администратора.
+На управляемом компьютере ограничения организации могут помешать установке.
+
+КАК ПРИМЕНИТЬ СКИН
+Один раз выберите в настройках osu! скин «! osu!gacha — Текущий скин».
+После сообщения о готовности нажмите Ctrl+Shift+Alt+S в меню osu!.
+В «Скинах» доступны превью, поиск, фильтры, избранное и «Применить».
+«Не менять текущий скин» запрещает автоматическую замену после награды;
+ручное применение продолжает работать. Оригиналы наград сохраняются.
+
+ЛИЧНЫЕ СКИНЫ И СЕССИИ
+По умолчанию личные скины временно переносятся в резервную папку, а после
+сессии возвращаются. Дождитесь окончания переноса. При запуске есть отмена.
+Можно включить сохранение личных скинов в папке Skins — будут переноситься
+только скины программы. Не удаляйте user_backup или журнал активной сессии.
+После аварийного закрытия запустите программу снова и завершите восстановление.
+Три слота имеют независимые коллекции. Одна сложность карты даёт одну награду
+в текущем слоте; повторные попытки не сбрасывают это ограничение.
+
+НАСТРОЙКИ И ИСТОРИЯ
+В настройках есть категории, поиск по названию/подсказке и масштаб 90–125%.
+Можно запускать osu! и выбранный драйвер графического планшета вместе с сессией.
+Ручные параметры наград и шанс особого скина доступны после включения галочек.
+Стандартный шанс особого скина — 5% при прибавке от 0,1 PP к профилю.
+После сессии показываются итоги. Список выпавших скинов записывается с этой версии.
+«Прогресс скоров» показывает дневную таблицу и график выбранного профиля/слота:
+максимальные PP/комбо и среднюю точность. Карты могут отличаться.
+Сравнение попыток на карточках использует одну сложность и одинаковые моды.
+
+GOOGLE DRIVE И ПРЕВЬЮ
+Скины загружаются по мере получения наград. Превью кэшируются заранее.
+В папке ранга имена .osk и .jpg/.jpeg/.png должны совпадать без расширений.
+Во время загрузки видны объём и скорость; оставшееся время оценивается,
+если сервер сообщает размер. Превью рулетки можно увеличить нажатием.
+Закрыть увеличение: ×, Escape или клик по фону.
+
+ЕСЛИ НЕ ЗАПУСКАЕТСЯ
+• «Обновления не найдены» от WinGet само по себе не является ошибкой.
+  Скрипт повторно ищет Python и при необходимости использует другой установщик.
+• При ошибке сети проверьте соединение, прокси/VPN и повторите run_skin_gacha.cmd.
+• Недостающие или несовместимые библиотеки восстанавливаются автоматически.
+  Для принудительной повторной установки есть install_dependencies.cmd.
+• Если Python всё ещё недоступен, установите Python 3.12 x64 с опцией
+  «Tcl/Tk and IDLE»: https://www.python.org/downloads/release/python-31210/
+  Затем снова откройте run_skin_gacha.cmd.
+• Если ошибка сохраняется, пришлите разработчику текст из окна запуска.
+  Не публикуйте API-ключ. В приложении есть «Логи» и «Сообщить об ошибке».
+
+ОБНОВЛЕНИЕ, ПЕРЕНОС И ОТПРАВКА ДРУЗЬЯМ
+Друзьям отправляйте только готовый osu!gacha_beta4.zip целиком.
+Не добавляйте свои settings.json, .venv, .runtime, sessions или папки скинов.
+Для обновления завершите сессию, закройте программу и сделайте резервную копию.
+Замените программные файлы из нового архива, сохранив личные данные и настройки.
+Затем запустите run_skin_gacha.cmd: отдельная установка обычно не нужна.
+Для переноса своего прогресса: Настройки → История → Перенос данных.
+Экспорт .gacha.zip включает историю, настройки и открытые скины всех слотов.
+API-ключ не включается без отдельной галочки. Импорт дополняет коллекцию,
+сохраняя местные пути к игре и драйверу. Архив может занимать много места.
+При восстановлении окружения старая .venv сохраняется как .venv-backup-*;
+пользовательские настройки, история и личные скины не удаляются.
+
+Отзывы: https://github.com/DimEdrol-prog/osu-skin-gacha/issues
+Публикация отчёта подтверждается пользователем на GitHub. Отчёты публичные.
+
+==================== ENGLISH ====================
+
+QUICK START
+1. Extract the entire osu!gacha_beta4.zip into a separate folder.
+   Do not run the application directly from an archive viewer.
+2. Double-click run_skin_gacha.cmd and wait for the application window.
+   The first launch needs internet to prepare Python and dependencies
+   automatically. Later launches reuse the installed environment.
+3. Complete initial setup: select your osu!stable folder and your profile.
+   Bancho needs your user ID and personal v1 API key. Gatari needs its own
+   Gatari user ID, without a Bancho key.
+4. Click Start session and wait for the ready message before playing.
+
+You do not need to run install_dependencies.cmd separately, add Python to
+PATH, or type commands. An existing compatible Python installation is reused.
+Supported: 64-bit Python 3.10–3.13 with Tcl/Tk on Windows 10/11.
+Automatic setup uses Python 3.12. WinGet is optional: the launcher can use
+the official python.org installer and verifies its digital signature first.
+Setup targets the current user and normally needs no administrator rights.
+Organization policies on managed computers may prevent installation.
+
+APPLYING SKINS
+Select “! osu!gacha — Текущий скин” once in osu! settings.
+After the ready message, press Ctrl+Shift+Alt+S in the osu! menu.
+The Skins window provides previews, search, filters, favorites and Apply.
+Keep the current skin disables automatic replacement after a reward;
+manual Apply remains available. Original reward skins are retained.
+
+PERSONAL SKINS AND SESSIONS
+By default, personal skins move temporarily to a backup folder and return
+at the end of the session. Wait for transfers to finish. Startup can be cancelled.
+You can keep personal skins in Skins; only application skins will be moved.
+Do not delete user_backup or an active session journal. After an unexpected
+shutdown, restart the application and complete recovery.
+The three slots have independent collections. A beatmap difficulty grants
+one reward per slot; repeated attempts do not reset this restriction.
+
+SETTINGS AND HISTORY
+Settings provide categories, search across labels/help, and 90–125% UI scaling.
+You can launch osu! and a selected tablet driver with a session.
+Enable the corresponding checkboxes to customize reward thresholds or the
+special-skin chance. The default is 5% after gaining at least 0.1 profile PP.
+Session summaries appear after playing. Received-skin lists are saved from
+this version onwards. Score progress shows a daily table and graph for the
+selected profile/slot: best PP/combo and mean accuracy. Maps may differ.
+Score-card comparisons use the same beatmap difficulty and the same mods.
+
+GOOGLE DRIVE AND PREVIEWS
+Skins download when awarded. Previews are cached in the background.
+Within each rank folder, .osk and .jpg/.jpeg/.png names must match without
+extensions. Downloads show bytes and speed; remaining time is estimated
+when the server provides a total size. Click a roulette preview to enlarge it.
+Close with ×, Escape, or a click outside the image.
+
+TROUBLESHOOTING
+• A WinGet “No available upgrade found” message is not a failure by itself.
+  The launcher checks Python again and can try the official installer.
+• For network errors, check your connection and proxy/VPN, then retry
+  run_skin_gacha.cmd.
+• Missing or incompatible dependencies are repaired automatically.
+  Run install_dependencies.cmd only if you need to force reinstallation.
+• If Python is still unavailable, install Python 3.12 x64 with
+  “Tcl/Tk and IDLE”: https://www.python.org/downloads/release/python-31210/
+  Then run run_skin_gacha.cmd again.
+• If an error persists, send the launcher error text to the developer.
+  Do not publish API keys. The application also provides Logs and Report a bug.
+
+UPDATING, MOVING DATA AND SHARING
+Send friends the complete prepared osu!gacha_beta4.zip only.
+Do not add your settings.json, .venv, .runtime, sessions, or skin folders.
+Before updating, end the session, close the application and make a backup.
+Replace application files from the new archive, keeping personal data and
+settings. Run run_skin_gacha.cmd; separate setup is normally unnecessary.
+To move your own progress, open Settings → History → Transfer data.
+A .gacha.zip export includes history, settings and unlocked skins in all slots.
+API keys are excluded unless explicitly enabled. Import adds to the collection
+and retains this computer's game and driver paths. Exports may be large.
+When repairing an environment, the previous .venv is retained as
+.venv-backup-*. Personal settings, history and skins are not deleted.
+
+Feedback: https://github.com/DimEdrol-prog/osu-skin-gacha/issues
+You confirm report publication on GitHub. Published reports are public.
+
+
+BETA4 — НОВОЕ / NEW (13.09.2026)
+РУССКИЙ
+• «Что нового» — краткая история изменений прямо в приложении.
+• Сложная: место именно сыгранного скора в топ-100 лидерборда сложности
+  выбранного сервера. У этой сложности должно быть больше 1000 запусков
+  на этом сервере. В офлайне сложный режим не выдаёт награды.
+  Bancho использует доступный через API v1 лидерборд; он может отличаться
+  от других режимов отображения таблицы на сайте. Отсутствующий в API
+  результат не считается подтверждённым местом в таблице.
+• Провалы не дают наград. На той же сложности новая награда возможна
+  при повышении ранга награды: например, D → C. Повтор C её не даёт.
+• В прогрессе скоров нажмите день или точку, чтобы посмотреть скоры дня.
+  Изменение точности указано в процентных пунктах. Кривая соединяет
+  реальные точки; она не означает наличие промежуточных скоров.
+• Сессии ищутся кнопкой ⌕ возле списка, когда их больше десяти.
+• Настройки → История: автоматические итоги можно выключить.
+• Настройки → Скины: разрешение удаления неизбранных по умолчанию
+  выключено. Включите его, затем откройте «Скины» → «Удалить неизбранные».
+  Удаляются награды текущего слота после завершения сессии и подтверждения.
+  Избранное, личные скины и экспортированные копии, другие слоты и история
+  сохраняются. Удалённый скин снова доступен для выпадения.
+• При автозапуске osu! и сервере Gatari добавляется -devserver osugatari.ru.
+  Это можно выключить в настройках скинов. Для смены сервера закройте
+  уже запущенную osu! перед началом сессии. Ссылки на скоры Gatari скрыты:
+  подтверждённого отдельного адреса результата API не предоставляет.
+• Логи отчётов свёрнуты на GitHub и в окне отзывов; их можно развернуть.
+
+ENGLISH
+• What's new opens a concise in-app changelog.
+• Hard uses the played score's place in the selected server's map leaderboard,
+  top 100. That difficulty must have over 1000 plays on that server.
+  Hard rewards are unavailable offline. Bancho uses the leaderboard exposed
+  by API v1, which may differ from other website leaderboard modes. Results
+  absent from the API are not treated as a confirmed leaderboard position.
+• Failed plays never earn rewards. A higher reward rank on the same difficulty
+  can earn again, e.g. D → C; repeating C cannot.
+• Click a chart point or table day to explore its scores. Accuracy changes use
+  percentage points. Curves connect observations, not additional scores.
+• Session search appears beside the selector after ten sessions.
+• Settings → History: disable the automatic summary popup if preferred.
+• Settings → Skins: nonfavorite deletion is disabled by default. Enable it,
+  then use Skins → Remove nonfavorites after ending the session and confirm.
+  Only the current slot's nonfavorite rewards are removed. Favorites, personal
+  skins, exported copies, other slots and history are kept. Removed skins can
+  drop again.
+• Gatari game autostart adds -devserver osugatari.ru; disable it in Skins settings
+  if needed. Close an existing osu! process before switching servers.
+  Gatari score links are hidden because no verified individual score URL is
+  available from this API.
+• Report logs are collapsed on GitHub and in the feedback window.
+
+
+BETA4 — МУЗЫКА И НАВИГАЦИЯ / MUSIC AND NAVIGATION
+• «Что нового» содержит 78 пунктов из истории разработки. Нажмите раздел,
+  чтобы развернуть или свернуть его.
+• Поиск настроек показывает свёрнутые категории с числом совпадений.
+  Стрелка разворачивает найденные пункты; название открывает всю категорию.
+• Кнопка ▶ на обложке скора проигрывает локальный трек из AudioFilename
+  соответствующего файла .osu. Нужна установленная карта в папке Songs.
+  Поддерживаются MP3, OGG, WAV и другие форматы SDL_mixer. Одновременно
+  играет один трек; повторное нажатие останавливает его. Закрытие карточки
+  или окна, из которого началось воспроизведение, также останавливает музыку.
+• Превью в коллекции открываются нажатием; закрытие — ×, Escape или
+  нажатие вне картинки.
+• Индикатор показывает сервер, время последней проверки и ошибки.
+  «Проверить» повторяет запрос; в офлайне сетевые проверки отключены.
+  Вне сессии постоянного фонового опроса нет.
+
+• What's new includes 78 conversation-based development notes in expandable
+  sections. Click a section heading to expand or collapse it.
+• Settings search shows collapsed categories with match counts. The arrow
+  reveals matching settings; the heading opens the complete category.
+• ▶ on a score cover streams the installed map's local AudioFilename track.
+  The map must exist in Songs. MP3, OGG, WAV and other SDL_mixer formats are
+  supported. Only one track plays at a time; click again to stop. Closing its
+  originating card or window stops playback too.
+• Click a collection preview to enlarge; close with ×, Escape or outside click.
+• Connection status shows the server, last check and errors. Check again
+  retries manually. Offline mode makes no connection checks; outside sessions
+  there is no continuous polling.
