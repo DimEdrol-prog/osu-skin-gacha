@@ -25,16 +25,6 @@
         { pkgs }: {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              (python3.withPackages (
-                ps: with ps; [
-                  tkinter
-                  customtkinter
-                  requests
-                  pillow
-                  pyinstaller
-                  beautifulsoup4
-                ]
-              ))
               python3
               tk
               tcl
@@ -49,6 +39,20 @@
               python -m venv .venv
               source .venv/bin/activate
             '';
+          };
+        }
+      );
+
+      packages = forEachSupportedSystem (
+        { pkgs }: {
+          default = pkgs.python3Packages.buildPythonApplication {
+            pname = "skin-gacha";
+            version = "1.0.0";
+            src = ./.;
+            makeWrapperArgs = [
+              "--set TCL_LIBRARY ${pkgs.tcl}/lib/tcl${pkgs.lib.versions.majorMinor pkgs.tcl.version}"
+              "--set TK_LIBRARY ${pkgs.tk}/lib/tk${pkgs.lib.versions.majorMinor pkgs.tk.version}"
+            ];
           };
         }
       );
