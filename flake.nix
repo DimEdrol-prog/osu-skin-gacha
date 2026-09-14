@@ -26,7 +26,7 @@
         nixpkgs.lib.genAttrs supportedSystems (
           system:
           let
-            pkgs = nixpkgs.legacyPackages.${system};
+            pkgs = import nixpkgs { inherit system; };
             workspace = uv2nix.lib.workspace.loadWorkspace { workspaceRoot = ./.; };
             overlay = workspace.mkOverlay {
               sourcePreference = "wheel";
@@ -44,7 +44,7 @@
             venv = pythonSet.mkVirtualEnv "skin-gacha-env" workspace.deps.default;
           in
           f {
-            pkgs = import nixpkgs { inherit system venv; };
+            pkgs = import nixpkgs { inherit pkgs venv; };
           }
         );
     in
@@ -90,7 +90,6 @@
               requests
               pillow
               beautifulsoup4
-              rosu-pp-py
               pygame-ce
             ];
             nativeBuildInputs = [ pkgs.makeWrapper ];
