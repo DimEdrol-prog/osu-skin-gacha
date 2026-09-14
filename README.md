@@ -1,12 +1,42 @@
 # osu!skingacha
 
 osu!skingacha - это программа для выбора рандомного скина в osu!stable
+
 # Скачивание
+Windows/Linux:
+- Скачайте [здесь](https://github.com/DimEdrol-prog/osu-skin-gacha/releases/latest) .exe или .AppImage файл и запустите
+
+# Сборка
 Windows:
- - Скачайте [здесь](https://github.com/DimEdrol-prog/osu-skin-gacha/releases/latest) .exe файл и запустите
+- Установите git и python:
+  ```
+  winget install --id Git.Git -e --source winget
+  winget install Python.Python.3
+  ```
+
+- Склонируйте репозиторий и перейдите в него:
+  ```
+  git clone https://github.com/DimEdrol-prog/osu-skin-gacha.git
+  cd osu-skin-gacha
+  ```
+
+- Установите зависимости:
+  ```
+  pip install -r requirements.txt
+  ```
+
+- Соберите:
+  ```
+  pyinstaller --hidden-import=customtkinter --hidden-import=requests --hidden-import=Pillow --hidden-import=beautifulsoup4 --hidden-import=rosu-pp-py --hidden-import=pygame-ce --onefile main.py
+  ```
+
+- Запустите:
+  ```
+  dist/main
+  ```
 
 Linux дистрибутивы:
- - Debian/Ubuntu:
+- Debian/Ubuntu:
   ```bash
   sudo apt update
   sudo apt install python3 python3-tk python3-pip make
@@ -24,22 +54,20 @@ Linux дистрибутивы:
   sudo zypper install python3 python3-tk python3-pip make
   ```
 
- - NixOS:
- ```bash
- nix develop # или nix-shell если без flakes
- ```
+- NixOS:
+  ```bash
+  nix develop # или nix-shell если без flakes
+  ```
 
- - Перейдите в директорию с программой соберите:
-```bash
-make install
-```
+- Перейдите в директорию с программой соберите:
+  ```bash
+  make install
+  ```
 
- - Запустите:
-```bash
-./dist/main
-```
-
- - Либо скачайте [здесь](https://github.com/DimEdrol-prog/osu-skin-gacha/releases/latest) AppImage
+- Запустите:
+  ```bash
+  ./dist/main
+  ```
 
 # Структура файлов
 ```
@@ -49,14 +77,12 @@ make install
 │   └── gacha.ico
 ├── docs
 │   ├── ARCHITECTURE.md
-│   ├── how_to_linux.md
 │   └── HOW_TO_RUN.txt
 ├── drive_catalog.json
 ├── ensure_python.ps1
 ├── flake.lock
 ├── flake.nix
 ├── install_dependencies.cmd
-├── install_dependencies.sh
 ├── main.py
 ├── Makefile
 ├── modules
@@ -105,6 +131,5 @@ make install
 ├── README.md
 ├── requirements.txt
 ├── run_skin_gacha.cmd
-├── run_skin_gacha.sh
 └── shell.nix
 ```
