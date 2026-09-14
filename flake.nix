@@ -28,7 +28,7 @@
           let
             pkgs = import nixpkgs { inherit system; };
             workspace = uv2nix.lib.workspace.loadWorkspace { workspaceRoot = ./.; };
-            overlay = workspace.mkOverlay {
+            overlay = workspace.mkPyprojectOverlay {
               sourcePreference = "wheel";
             };
             pythonSet =
@@ -43,9 +43,7 @@
                 );
             venv = pythonSet.mkVirtualEnv "skin-gacha-env" workspace.deps.default;
           in
-          f {
-            pkgs = import nixpkgs { inherit pkgs venv; };
-          }
+          f { inherit pkgs venv; }
         );
     in
     {
