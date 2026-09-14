@@ -53,6 +53,15 @@
             build-system = with pkgs.python3Packages; [
               setuptools
             ];
+            dependencies = with pkgs.python3Packages; [
+              tkinter
+              customtkinter
+              requests
+              pillow
+              beautifulsoup4
+              rosu-pp-py
+              pygame-ce
+            ];
             makeWrapperArgs = [
               "--set TCL_LIBRARY ${pkgs.tcl}/lib/tcl${pkgs.lib.versions.majorMinor pkgs.tcl.version}"
               "--set TK_LIBRARY ${pkgs.tk}/lib/tk${pkgs.lib.versions.majorMinor pkgs.tk.version}"
