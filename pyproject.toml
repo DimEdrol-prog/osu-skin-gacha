@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skin-gacha"
+version = "1.0.0"
+description = "Skin Gacha for osu!"
+dependencies = [
+    "customtkinter",
+    "requests",
+    "pillow",
+    "beautifulsoup4",
+    "rosu-pp-py",
+    "pygame-ce"
+]
+
+[project.scripts]
+skin-gacha = "src.main:main"
