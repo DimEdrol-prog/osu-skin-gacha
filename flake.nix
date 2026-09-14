@@ -49,6 +49,10 @@
             pname = "skin-gacha";
             version = "1.0.0";
             src = ./.;
+            pyproject = true;
+            build-system = with pkgs.python3Packages; [
+              setuptools
+            ];
             makeWrapperArgs = [
               "--set TCL_LIBRARY ${pkgs.tcl}/lib/tcl${pkgs.lib.versions.majorMinor pkgs.tcl.version}"
               "--set TK_LIBRARY ${pkgs.tk}/lib/tk${pkgs.lib.versions.majorMinor pkgs.tk.version}"
