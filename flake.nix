@@ -79,6 +79,7 @@
             version = "1.0.0";
             src = ./.;
             pyproject = true;
+            dontBuild = true;
             build-system = with pkgs.python3Packages; [
               setuptools
             ];
