@@ -99,10 +99,10 @@
             installPhase = ''
               mkdir -p $out/bin
               makeWrapper ${venv}/bin/python $out/bin/skin-gacha \
-                --add-flags "$src/main.py" \
-                --prefix PYTHONPATH : "$src" \
-                --set TCL_LIBRARY "${pkgs.tcl}/lib/tcl${pkgs.lib.versions.majorMinor pkgs.tcl.version}" \
-                --set TK_LIBRARY "${pkgs.tk}/lib/tk${pkgs.lib.versions.majorMinor pkgs.tk.version}"
+              --add-flags "$src/main.py" \
+              --prefix PYTHONPATH : "${pkgs.python3Packages.tkinter}/${pkgs.python3.sitePackages}:$src" \
+              --set TCL_LIBRARY "${pkgs.tcl}/lib/tcl${pkgs.lib.versions.majorMinor pkgs.tcl.version}" \
+              --set TK_LIBRARY "${pkgs.tk}/lib/tk${pkgs.lib.versions.majorMinor pkgs.tk.version}"
             '';
           };
         }
