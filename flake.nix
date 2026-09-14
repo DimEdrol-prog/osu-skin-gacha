@@ -97,8 +97,13 @@
               "--set TK_LIBRARY ${pkgs.tk}/lib/tk${pkgs.lib.versions.majorMinor pkgs.tk.version}"
             ];
             installPhase = ''
-              ln -s ${venv}/bin/skin-gacha $out/bin/skin-gacha
-
+              mkdir -p $out/bin
+              if [ -f "${venv}/bin/skin-gacha" ]; then
+                ln -s ${venv}/bin/skin-gacha $out/bin/skin-gacha
+              else
+                makeWrapper ${venv}/bin/python $out/bin/skin-gacha \
+                  --add-flags "$src/src/main.py"
+              fi
               wrapProgram $out/bin/skin-gacha \
                 --set TCL_LIBRARY "${pkgs.tcl}/lib/tcl${pkgs.lib.versions.majorMinor pkgs.tcl.version}" \
                 --set TK_LIBRARY "${pkgs.tk}/lib/tk${pkgs.lib.versions.majorMinor pkgs.tk.version}" \
