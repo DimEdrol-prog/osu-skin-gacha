@@ -6,6 +6,7 @@
     uv2nix.url = "github:pyproject-nix/uv2nix";
     pyproject-nix.url = "github:pyproject-nix/pyproject.nix";
     pyproject-build-systems.url = "github:pyproject-nix/build-system-pkgs";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
@@ -15,67 +16,33 @@
       uv2nix,
       pyproject-nix,
       pyproject-build-systems,
+      flake-utils,
       ...
     }:
-    let
-      supportedSystems = [
-        "x86_64-linux"
-      ];
-      forEachSupportedSystem =
-        f:
-        nixpkgs.lib.genAttrs supportedSystems (
-          system:
-          let
-            pkgs = import nixpkgs { inherit system; };
-            workspace = uv2nix.lib.workspace.loadWorkspace { workspaceRoot = ./.; };
-            overlay = workspace.mkPyprojectOverlay {
-              sourcePreference = "wheel";
-            };
-            pythonSet =
-              (pkgs.callPackage pyproject-nix.build.packages {
-                python = pkgs.python3;
-              }).overrideScope
-                (
-                  pkgs.lib.composeManyExtensions [
-                    pyproject-build-systems.overlays.default
-                    overlay
-                  ]
-                );
-            venv = pythonSet.mkVirtualEnv "skin-gacha-env" workspace.deps.default;
-          in
-          f { inherit pkgs venv; }
-        );
-    in
-    {
-      devShells = forEachSupportedSystem (
-        { pkgs, venv }: {
-          default = pkgs.mkShell {
-            packages = with pkgs; [
-              python3
-              tk
-              tcl
-              stdenv.cc.cc.lib
-              zlib
-              gnumake
-              uv
-              venv
-            ];
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+        workspace = uv2nix.lib.workspace.loadWorkspace { workspaceRoot = ./.; };
 
-            shellHook = ''
-              unset PYTHONPATH
-              export TCL_LIBRARY="${pkgs.tcl}/lib/tcl${pkgs.lib.versions.majorMinor pkgs.tcl.version}"
-              export TK_LIBRARY="${pkgs.tk}/lib/tk${pkgs.lib.versions.majorMinor pkgs.tk.version}"
-              export PATH="${venv}/bin:$PATH"
-              export PYTHONPATH="${pkgs.python3Packages.tkinter}/${pkgs.python3.sitePackages}"
-              python3 -m venv .venv
-              source .venv/bin/activate
-            '';
-          };
-        }
-      );
+        uvOverlay = workspace.mkPyprojectOverlay {
+          sourcePreference = "wheel";
+        };
 
-      packages = forEachSupportedSystem (
-        { pkgs, venv }: {
+        pythonSet =
+          (pkgs.callPackage pyproject-nix.build.packages {
+            python = pkgs.python3;
+          }).overrideScope
+            (
+              pkgs.lib.composeManyExtensions [
+                pyproject-build-systems.overlays.default
+                uvOverlay
+              ]
+            );
+        virtualenv = pythonSet.mkVirtualEnv "dev-env" workspace.deps.all;
+      in
+      {
+        /*
           default = pkgs.stdenv.mkDerivation {
             pname = "skin-gacha";
             version = "0.5.0";
@@ -102,14 +69,42 @@
             ];
             installPhase = ''
               mkdir -p $out/bin
-              makeWrapper ${venv}/bin/python $out/bin/skin-gacha \
+              makeWrapper ${virtualenv}/bin/python $out/bin/skin-gacha \
               --add-flags "$src/main.py" \
               --prefix PYTHONPATH : "${pkgs.python3Packages.tkinter}/${pkgs.python3.sitePackages}:$src" \
               --set TCL_LIBRARY "${pkgs.tcl}/lib/tcl${pkgs.lib.versions.majorMinor pkgs.tcl.version}" \
               --set TK_LIBRARY "${pkgs.tk}/lib/tk${pkgs.lib.versions.majorMinor pkgs.tk.version}"
             '';
           };
-        }
-      );
-    };
+        */
+        packages.default = pkgs.stdenv.mkDerivation {
+          pname = "skin-gacha";
+          version = "0.5.0";
+          src = ./.;
+          dontBuild = true;
+          dontConfigure = true;
+          dontUseCmakeConfigure = true;
+          nativeBuildInputs = [ pkgs.makeWrapper ];
+          makeWrapperArgs = [
+            "--set TCL_LIBRARY ${pkgs.tcl}/lib/tcl${pkgs.lib.versions.majorMinor pkgs.tcl.version}"
+            "--set TK_LIBRARY ${pkgs.tk}/lib/tk${pkgs.lib.versions.majorMinor pkgs.tk.version}"
+          ];
+          installPhase = ''
+            mkdir -p $out/bin
+            makeWrapper ${virtualenv}/bin/python $out/bin/skin-gacha \
+            --add-flags "$src/main.py" \
+            --prefix PYTHONPATH : "${pkgs.python3Packages.tkinter}/${pkgs.python3.sitePackages}:$src" \
+            --set TCL_LIBRARY "${pkgs.tcl}/lib/tcl${pkgs.lib.versions.majorMinor pkgs.tcl.version}" \
+            --set TK_LIBRARY "${pkgs.tk}/lib/tk${pkgs.lib.versions.majorMinor pkgs.tk.version}"
+          '';
+        };
+        devShells.default = pkgs.mkShell {
+          packages = [
+            pkgs.gnumake
+            virtualenv
+            pkgs.uv
+          ];
+        };
+      }
+    );
 }

@@ -666,9 +666,13 @@ dependencies = [
     { name = "mutagen" },
     { name = "pillow" },
     { name = "pygame-ce" },
-    { name = "pyinstaller" },
     { name = "requests", extra = ["socks"] },
     { name = "rosu-pp-py" },
+]
+
+[package.optional-dependencies]
+dev = [
+    { name = "pyinstaller" },
 ]
 
 [package.metadata]
@@ -679,10 +683,11 @@ requires-dist = [
     { name = "mutagen", specifier = ">=1.47,<2" },
     { name = "pillow", specifier = ">=10,<13" },
     { name = "pygame-ce", specifier = ">=2.5,<3" },
-    { name = "pyinstaller", specifier = ">=6.22.3" },
+    { name = "pyinstaller", marker = "extra == 'dev'", specifier = ">=6.22.3" },
     { name = "requests", extras = ["socks"], specifier = ">=2.31,<3" },
     { name = "rosu-pp-py", specifier = ">=4.0.2,<5" },
 ]
+provides-extras = ["dev"]
 
 [[package]]
 name = "soupsieve"

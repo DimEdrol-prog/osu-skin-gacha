@@ -16,8 +16,10 @@ dependencies = [
     "pygame-ce>=2.5,<3",
     "mutagen>=1.47,<2",
     "keyring>=25.6,<26; sys_platform == 'linux'",
-    "pyinstaller>=6.22.3"
 ]
+
+[project.optional-dependencies]
+dev = ["pyinstaller>=6.22.3"]
 
 [project.scripts]
 skin-gacha = "main:main"

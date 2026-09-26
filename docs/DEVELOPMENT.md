@@ -12,7 +12,7 @@
 
 На Linux (требуется python 3.12+, gnumake и Tkinter):
 ```bash
-make install
+make build
 ```
 
 На Windows (нужен python 3.12+):
@@ -37,7 +37,6 @@ Windows:
 ```
 
 ## Структура (может устаревать/быть не точной)
-
 ```
 .
 ├── assets
@@ -47,31 +46,13 @@ Windows:
 │   └── gacha.ico
 ├── docs
 │   ├── ARCHITECTURE.md
-│   ├── DEVELOPMENT.md
+│   └── DEVELOPMENT.md
 ├── flake.lock
 ├── flake.nix
 ├── main.py
 ├── Makefile
 ├── modules
 │   ├── __init__.py
-│   ├── __pycache__
-│   │   ├── gacha_api.cpython-313.pyc
-│   │   ├── gacha_app.cpython-313.pyc
-│   │   ├── gacha_config.cpython-313.pyc
-│   │   ├── gacha_connection.cpython-313.pyc
-│   │   ├── gacha_insights.cpython-313.pyc
-│   │   ├── gacha_previews.cpython-313.pyc
-│   │   ├── gacha_reports.cpython-313.pyc
-│   │   ├── gacha_rules.cpython-313.pyc
-│   │   ├── gacha_settings.cpython-313.pyc
-│   │   ├── gacha_setup.cpython-313.pyc
-│   │   ├── gacha_skin_apply.cpython-313.pyc
-│   │   ├── gacha_skins.cpython-313.pyc
-│   │   ├── gacha_sources.cpython-313.pyc
-│   │   ├── gacha_storage.cpython-313.pyc
-│   │   ├── gacha_updates.cpython-313.pyc
-│   │   ├── gacha_widgets.cpython-313.pyc
-│   │   └── skin_gacha.cpython-313.pyc
 │   ├── gacha_api.py
 │   ├── gacha_api_v2.py
 │   ├── gacha_app.py
@@ -102,7 +83,6 @@ Windows:
 │   ├── gacha_widgets.py
 │   ├── music_library.py
 │   └── skin_gacha.py
-├── OAUTH_SETUP.md
 ├── oauth_worker
 │   ├── package.json
 │   ├── pnpm-lock.yaml
@@ -113,8 +93,8 @@ Windows:
 │   ├── test
 │   │   └── worker.test.mjs
 │   └── wrangler.jsonc
+├── osu-gacha.spec
 ├── pyproject.toml
 ├── README.md
-├── shell.nix
 └── uv.lock
 ```
